@@ -1,47 +1,66 @@
+
+package p15;
+
 import java.util.Scanner;
-public class Prog15{
-	String s, st[];
-	int count = 0;
 
-	Prog15(String str){
-		s = str;
-	}
+public class P15 {
 
-	void sortLine(){
-		int i,j;
-		st = s.split(" ");
-		//bubble sort
-		for(i=0; i<(st.length)-1; i++){
-			for(j=0;j<(st.length)-1;j++){
-				if(st[j].compareTo(st[j+1])>0){
-					//swap
-					String temp = st[j];
-					st[j] = st[j+1];
-					st[j+1] = temp;
-				}
-			}
-		}
-		
-		System.out.println("Print data after sorting: ");
-		for(i=0;i<st.length;i++){
-			if(st[i].charAt(0)>='A'&&st[i].charAt(0)<='Z')
-				count++;
-
-			System.out.print(st[i]);
-			System.out.print(" ");
-		}
-		System.out.println("");
-		System.out.println("Total number of capital words in the string are: "+count);
-	}
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter a line : ");
-		String a = sc.nextLine();
-		Prog15 obj = new Prog15(a);
-		//1 print data before sorting
-		//2 sort the data
-		//3 print data after sorting
-		obj.sortLine();
-	}
+        String s;
+        String s1[];
+        
+        P15(String str)
+        {
+            s=str;
+        }
+        public void sort()
+        {
+           int i;
+           int j = 0;
+           s1=s.split(" ");
+           for(i=0;i<s1.length;i++)
+           {
+               
+               for(i=j+1;j<s1.length;j++)
+               {
+                   if(s1[i].compareTo(s1[j])>0)
+                   {
+                       String t=s1[i];
+                       s1[i]=s1[j];
+                       s1[j]=t;
+                   }
+                   
+               }
+                  
+             
+           }
+          
+            for(i=0;i<s1.length;i++)
+            {
+                           System.out.println(s1[i]);
+             }
+        }
+         public void count()
+        {
+         int c=0,i;   
+            for(i=0;i<s1.length;i++)
+            {
+            if(s1[i].charAt(0)>=65 && s1[i].charAt(0)<=90)
+              {
+                  c++;
+              }
+             
+            }
+            System.out.println("count="+c);
+        }  
+           
+       
+    
+    public static void main(String[] args){
+        System.out.println("Enter string");
+Scanner sc=new Scanner(System.in);
+String str=sc.nextLine();
+P15 p=new P15(str);
+p.sort();
+p.count();   
+}
 }
